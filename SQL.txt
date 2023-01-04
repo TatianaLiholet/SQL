@@ -1,0 +1,36 @@
+
+CREATE TABLE public.wallet
+(
+    wallet_id integer NOT NULL,
+    currency text,
+    amount integer,
+    user_id integer NOT NULL,
+    " created" date,
+    PRIMARY KEY (wallet_id)
+);
+
+CREATE TABLE public."user"
+(
+    user_id integer NOT NULL,
+    name text,
+    "surname " text,
+    "date_of_registration " date,
+    PRIMARY KEY (user_id)
+);
+
+INSERT INTO public."user"(
+	user_id, name, "surname ", "date_of_registration ")
+	VALUES (1, 'TestUser', 'User1', '2018-02-10');
+	
+INSERT INTO public."user"(
+	user_id, name, "surname ", "date_of_registration ")
+	VALUES ( 2,'Mark', 'Ryuo', '2019-02-09');
+	
+INSERT INTO public.wallet(
+	wallet_id, currency, amount, user_id, " created")
+	VALUES (2, 'Dolars', 5000, 2, '2020-06-10');
+	
+		
+SELECT name, currency, amount from "user"
+ LEFT JOIN wallet
+ on "user".user_id = wallet.user_id
